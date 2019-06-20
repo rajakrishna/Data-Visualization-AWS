@@ -1,0 +1,37 @@
+
+{% block content %}
+<h1>RAJA KRISHNA 1001671629</h1>
+<table>
+    <tr>
+        <th>StateName</th>
+        <!-- <th>TotalPop</th>
+        <th>VotePop</th>
+        <th>Registered</th>
+        <th>Voted</th> -->
+
+    </tr>
+    {% for row in row %}
+        <tr>
+            <td>
+                {{row.StateName}}
+
+            </td>
+            <!-- <td>
+                {{row.TotalPop}}
+            </td>
+            <td>
+                {{row.VotePop}}
+            </td>
+            <td>
+                {{row.Registered}}
+            </td>
+            <td>
+                {{row.Voted}}
+            </td> -->
+
+
+        </tr>
+
+    {% endfor %}
+</table>
+{% endblock content %}
