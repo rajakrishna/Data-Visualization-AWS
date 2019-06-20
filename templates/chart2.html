@@ -43,8 +43,8 @@
       //];
       myChart.setBounds(20, 20, 460, 360)
 
-      myChart.addMeasureAxis("p", "count");
-      rings = myChart.addSeries("age_group", dimple.plot.pie);
+      myChart.addMeasureAxis("p", "States");
+      rings = myChart.addSeries("vtt", dimple.plot.pie);
       myChart.addLegend(500, 20, 90, 300, "left");
 
       rings.afterDraw = function(shape, data) {
