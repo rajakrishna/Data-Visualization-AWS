@@ -13,8 +13,8 @@
             var data = {{a|tojson|safe}};
             console.log(data);
             var chart = new dimple.chart(svg, data);
-            var x = chart.addCategoryAxis("x", "age_group");
-            var y = chart.addMeasureAxis("y", "count");
+            var x = chart.addCategoryAxis("x", "States");
+            var y = chart.addMeasureAxis("y", "vtt");
             var s =  chart.addSeries("raja", dimple.plot.bar);
 
         chart.defaultColors = [

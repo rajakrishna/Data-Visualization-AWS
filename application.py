@@ -76,17 +76,17 @@ def piechart():
     nvalue = int(request.form['nvalue'])
     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
     # a=nvalue #chnage this variable
-    start=nvalue
-    end=80
+    start=nvalue+990 #10
+    end=17000
     age_interval=[0]
     val=start
     while val<end:
-        val+=nvalue
+        val+=start
         age_interval.append(val)
     mem=[]
     for i in range(0,len(age_interval)-1):
         #query="select (count(*)) as count from voting where age > "+str(age_interval[i])+" and age<"+str(age_interval[i+1])
-        query="select count(*) as count from voting where ((voted/Totalpop)*100) >"+str(age_interval[i])+" and ((voted/Totalpop)*100)< "+str(age_interval[i+1])
+        query="select count(*) as count from voting where Registered >"+str(age_interval[i])+" and Registered< "+str(age_interval[i+1])
         cur=con.cursor()
         cur.execute(query)
         result=list(cur.fetchall())
@@ -99,7 +99,7 @@ def piechart():
                 mem.append(memdict)
             print(mem)
 
-    return render_template('chart2.html',a=mem,chart="pie")
+    return render_template('barchart.html',a=mem,chart="bar")
 
 port = int(os.getenv("PORT", 5000))
 if __name__ == '__main__':
