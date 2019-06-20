@@ -10,30 +10,29 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-#  return render_template("home.html")
-    return "hi"
+  return render_template("home.html")
 
 
 
-# @app.route('/magsearch', methods=['GET', 'POST'])
-# def magsearch():
-#     mag1 = request.form['mag1']
-#     mag2 = request.form['mag2']
-#     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
-#     query="Select mag,latitude from quake3 where mag between '"+mag1+"' and '"+mag2+"'"
-#     columns=['mag','latitude']
-#     dic=dict()
-#     cur=con.cursor()
-#     mem=[]
-#     cur.execute(query)
-#     result=list(cur.fetchall())
-#     for row in result:
-#         memdict=dict()
-#         for j,val in enumerate(row):
-#             memdict[columns[j]]=val
-#         mem.append(memdict)
-#     # a=[1,2,3,4,5]
-#     return render_template('chart.html',a=mem,chart="pie")
+@app.route('/magsearch', methods=['GET', 'POST'])
+def magsearch():
+    mag1 = request.form['mag1']
+    mag2 = request.form['mag2']
+    con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
+    query="Select mag,latitude from quake3 where mag between '"+mag1+"' and '"+mag2+"'"
+    columns=['mag','latitude']
+    dic=dict()
+    cur=con.cursor()
+    mem=[]
+    cur.execute(query)
+    result=list(cur.fetchall())
+    for row in result:
+        memdict=dict()
+        for j,val in enumerate(row):
+            memdict[columns[j]]=val
+        mem.append(memdict)
+    # a=[1,2,3,4,5]
+    return render_template('chart.html',a=mem,chart="pie")
 
 
 port = int(os.getenv("PORT", 5000))
