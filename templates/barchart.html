@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>chart</title>
+    <div id="chart"></div>
+    <div id="chartContainer">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+    <script type="text/javascript">
+        
+    if ("{{ chart }}" == "bar"){
+            var svg = dimple.newSvg("#chartContainer", 1000, 500);       
+               
+            var data = {{a|tojson|safe}};
+            console.log(data);
+            var chart = new dimple.chart(svg, data);
+            var x = chart.addCategoryAxis("x", "age_group");
+            var y = chart.addMeasureAxis("y", "count");
+            var s =  chart.addSeries("raja", dimple.plot.bar);
+
+        chart.defaultColors = [
+          new dimple.color("#3498db", "#2980b9", 1), // blue
+          new dimple.color("#e74c3c", "#c0392b", 1), // red
+          new dimple.color("#2ecc71", "#27ae60", 1), // green
+          new dimple.color("#9b59b6", "#8e44ad", 1), // purple
+          new dimple.color("#e67e22", "#d35400", 1), // orange
+          new dimple.color("#f1c40f", "#f39c12", 1), // yellow
+          new dimple.color("#1abc9c", "#16a085", 1), // turquoise
+          new dimple.color("#1abc9c", "#16a085", 1),
+          new dimple.color("#1abc9c", "#16a085", 1),
+          new dimple.color("#95a5a6", "#7f8c8d", 1),
+          new dimple.color("#95a5a6", "#7f8c8d", 1)   // gray
+      ];
+
+        s.afterDraw = function (shape, data) {
+                var shape = d3.select(shape),
+                goldenRatio = 1.61803398875;
+                svg.append("rect")
+                .attr("x", shape.attr("x"))
+                .attr("y", shape.attr("y"))
+                .attr("height", shape.attr("height"))
+                .attr("width", (0.5 * shape.attr("width")) / goldenRatio)
+                .style("fill", shape.style("stroke"))
+                .style("opacity", 1)
+                .style("pointer-events", "none");
+
+        svg.append("text")
+          .attr("x", parseFloat(shape.attr("x")) + shape.attr("width") / 2)
+          .attr("y", parseFloat(shape.attr("y")) + (shape.attr("height") > 30 ? (shape.attr("height") / 2 + 8) : - 10))
+          .style("font-family", "courier new")
+          .style("text-anchor", "middle")
+          .style("font-size", "16px")
+          .style("fill", "#ecf0f1")
+          .style("pointer-events", "none")
+          .text(y._getFormat()(data.yValue));
+        };
+
+            chart.draw();}
+
+        </script>
+    </div>    
+    </html>

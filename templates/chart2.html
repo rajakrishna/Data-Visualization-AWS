@@ -18,8 +18,8 @@
             chart.defaultColors = [
                new dimple.color("orange") // You can use #RGB here
            ];
-            chart.addCategoryAxis("x", "latitude");
-            chart.addMeasureAxis("y", "mag");
+            chart.addCategoryAxis("x", "age_group");
+            chart.addMeasureAxis("y", "count");
             chart.addSeries(null, dimple.plot.bar);
             chart.draw();}
             
@@ -42,9 +42,29 @@
           //new dimple.color("#95a5a6", "#7f8c8d", 1)  // gray
       //];
       myChart.setBounds(20, 20, 460, 360)
-      myChart.addMeasureAxis("p", "latitude");
-      myChart.addSeries("mag", dimple.plot.pie);
+
+      myChart.addMeasureAxis("p", "count");
+      rings = myChart.addSeries("age_group", dimple.plot.pie);
       myChart.addLegend(500, 20, 90, 300, "left");
+
+      rings.afterDraw = function(shape, data) {
+        var bbox, ctm;
+        ctm = shape.getCTM();
+        bbox = shape.getBBox();
+        return this.chart.svg.append("text")
+          .attr("x", ctm.e + bbox.x + bbox.width/2)
+          .attr("y", ctm.f + bbox.y + bbox.height/2)
+          .text(Math.round(1000*data.piePct)/10 + "%");;
+      };
+
+
+
+
+
+
+
+
+
       myChart.draw();
     }
 
