@@ -16,7 +16,8 @@
             var chart = new dimple.chart(svg, data);
             var x = chart.addCategoryAxis("x", "vtt");
             var y = chart.addMeasureAxis("y", "States");
-            var s =  chart.addSeries("raja", dimple.plot.bar);
+            var s =  chart.addSeries(null, dimple.plot.bar);
+            // var l = chart.addLegend(500, 20, 90, 300, "left"); 
 
         chart.defaultColors = [
           new dimple.color("#3498db", "#2980b9", 1), // blue
