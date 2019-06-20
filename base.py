@@ -1,17 +1,25 @@
 """Cloud Foundry test"""
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 import os
 import pyodbc
 import csv
 
 app = Flask(__name__)
 
-port = int(os.getenv("PORT", 5000))
+
 
 @app.route('/')
-def hello_world():
+def home():
+ return render_template("home.html")
+
+
+
+@app.route('/magsearch', methods=['GET', 'POST'])
+def magsearch():
+    mag1 = request.form['mag1']
+    mag2 = request.form['mag2']
     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
-    query="Select mag,latitude from quake3 where mag between 7 and 8"
+    query="Select mag,latitude from quake3 where mag between '"+mag1+"' and '"+mag2+"'"
     columns=['mag','latitude']
     dic=dict()
     cur=con.cursor()
@@ -27,6 +35,6 @@ def hello_world():
     return render_template('chart.html',a=mem,chart="pie")
 
 
-
+port = int(os.getenv("PORT", 5000))
 if __name__ == '__main__':
     app.run(port=port,debug=True)
