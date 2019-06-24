@@ -79,8 +79,8 @@ def piechart():
     for y in range(n1,n2,1):
      memdict=dict()
      x=y*y+1 
-     memdict['x']=x
-     memdict['y']=y
+     memdict['xaxis']=x
+     memdict['yaxis']=y
      mem.append(memdict)
     return render_template('chart_karthik.html',a=mem,chart="scatter")
 

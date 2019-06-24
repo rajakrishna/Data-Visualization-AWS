@@ -121,18 +121,20 @@
     var data = {{ a|tojson|safe }};
     var myChart = new dimple.chart(svg, data);
          myChart.setBounds(60, 30, 1200, 600)
-           var x = myChart.addMeasureAxis("x", "x");
-           var y = myChart.addMeasureAxis("y", "y");
-           myChart.addSeries(["x", "y"], dimple.plot.bubble);
+           var x = myChart.addMeasureAxis("x", "xaxis");
+           var y = myChart.addMeasureAxis("y", "yaxis");
+           myChart.addSeries(["xaxis", "yaxis"], dimple.plot.bubble);
            myChart.addLegend(200, 10, 360, 20, "right");
            x.overrideMax = 20.00000000;
            x.overrideMin = -20.00000000;
            y.overrideMax = 10.00000000;
            y.overrideMin = -10.00000000;
+           x.title="X-axis"
+           y.title="Y-axis"
            x.ticks = 5;
            x.ticks = 5;
-           x.tickFormat = ',.7f';
-           y.tickFormat = ',.7f';
+          // x.tickFormat = ',.7f';
+           //y.tickFormat = ',.7f';
            myChart.draw();
    }
    else{
