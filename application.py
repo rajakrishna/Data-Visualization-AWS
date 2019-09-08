@@ -14,7 +14,7 @@
 
 # @app.route('/showdb5', methods=['GET', 'POST'])
 # def showdb5():
-#     cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
+#     cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:sname.database.windows.net,1433;Database=DBname;Uid=username;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 #     cursor = cnxn.cursor()
 #     cursor.execute("SELECT StateName from voting where TotalPop between 5000 and 10000 ")
 #     row = cursor.fetchall()
@@ -22,7 +22,7 @@
 
 # @app.route('/showdb10', methods=['GET', 'POST'])
 # def showdb10():
-#     cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
+#     cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:sname.database.windows.net,1433;Database=DBname;Uid=username;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 #     cursor = cnxn.cursor()
 #     cursor.execute("SELECT StateName from voting where TotalPop between 10000 and 50000 ")
 #     row = cursor.fetchall()
@@ -34,7 +34,7 @@
 # # def magsearch():
 # #     mag1 = request.form['mag1']
 # #     mag2 = request.form['mag2']
-# #     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
+# #     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:sname.database.windows.net,1433;Database=DBname;Uid=username;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 # #     query="Select mag,latitude from quake3 where mag between '"+mag1+"' and '"+mag2+"'"
 # #     columns=['mag','latitude']
 # #     dic=dict()
@@ -54,7 +54,7 @@
 # # def magsearch():
 # #     mag1 = request.form['mag1']
 # #     mag2 = request.form['mag2']
-# #     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:hello1997.database.windows.net,1433;Database=quakes;Uid=raja@hello1997;Pwd={azure@123};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
+# #     con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=tcp:sname.database.windows.net,1433;Database=DBname;Uid=username;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 # #     query="Select mag,latitude from quake3 where mag between '"+mag1+"' and '"+mag2+"'"
 # #     columns=['mag','latitude']
 # #     dic=dict()
